@@ -10,6 +10,9 @@
 
 #define DISTANCES_MAT_PATH "Path/to/CEC2013Supp/Instances/MandlTravelTimes.txt"
 #define DEMAND_MAT_PATH "Path/to/CEC2013Supp/Instances/MandlDemand.txt"
+#define N_GENERATIONS 200
+#define POPULATION_SIZE 200
+
 int main() {
 	srand(time(NULL));
 	std::ifstream distances_file(DISTANCES_MAT_PATH);
@@ -59,18 +62,18 @@ int main() {
 			}	
 			getline(demand_file, line); // get the empty line
 		}
-		int population_size = 200, min_route_length = 2, max_route_length = 8, n_routes = 6;
+		int population_size = POPULATION_SIZE, min_route_length = 2, max_route_length = 8, n_routes = 6;
 		Individual *population = new Individual[population_size];
 		//RouteSet rs = generate_random_routeset(transit_network, min_route_length, max_route_length, n_routes);
 		seed_population(population, population_size, transit_network, min_route_length, max_route_length, n_routes, demand_matrix);
-		for (int i = 0; i < 200; i++) {
+		for (int i = 0; i < N_GENERATIONS; i++) {
 			seamo_iterate(population, population_size, transit_network, min_route_length, max_route_length, n_routes, demand_matrix);
 			std::cout << "Generation :" << i << "\n";
 		}
 		double best_so_far[2] = { INFINITY,INFINITY };
 		int best_so_far_indices[2];
 		for (int i = 0; i < population_size; i++) {
-		main.cpp genetic_algorithm.cpp Graph.cpp RouteSet.cpp genetic.h Graph.h RouteSet.h genetic_tools.cpp  	if (population[i].fitness.first < best_so_far[0]) {
+			if (population[i].fitness.first < best_so_far[0]) {
 				best_so_far[0] = population[i].fitness.first;
 				best_so_far_indices[0] = i;
 			}
