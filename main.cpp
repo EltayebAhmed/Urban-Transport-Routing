@@ -8,8 +8,8 @@
 #include<cstdlib>
 #include<ctime>
 
-#define DISTANCES_MAT_PATH "C:\\Users\\eltay\\Documents\\grad_project\\Mumford_UTRP\\CEC2013Supp\\Instances\\MandlTravelTimes.txt"
-#define DEMAND_MAT_PATH "C:\\Users\\eltay\\Documents\\grad_project\\Mumford_UTRP\\CEC2013Supp\\Instances\\MandlDemand.txt"
+#define DISTANCES_MAT_PATH "Path/to/CEC2013Supp/Instances/MandlTravelTimes.txt"
+#define DEMAND_MAT_PATH "Path/to/CEC2013Supp/Instances/MandlDemand.txt"
 int main() {
 	srand(time(NULL));
 	std::ifstream distances_file(DISTANCES_MAT_PATH);
@@ -70,7 +70,7 @@ int main() {
 		double best_so_far[2] = { INFINITY,INFINITY };
 		int best_so_far_indices[2];
 		for (int i = 0; i < population_size; i++) {
-			if (population[i].fitness.first < best_so_far[0]) {
+		main.cpp genetic_algorithm.cpp Graph.cpp RouteSet.cpp genetic.h Graph.h RouteSet.h genetic_tools.cpp  	if (population[i].fitness.first < best_so_far[0]) {
 				best_so_far[0] = population[i].fitness.first;
 				best_so_far_indices[0] = i;
 			}
